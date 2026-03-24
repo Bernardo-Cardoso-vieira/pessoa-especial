@@ -1,14 +1,106 @@
 body {
-  background-color: white; /*Pode escolher outra cor se quiser*/
+  background-color: transparent;
 }
 
 h1 {
-  color: black; /*Pode escolher outra cor se quiser*/
   text-align: center;
+  color: black; /*Pode escolher outra cor se quiser*/
+  font-family: sans-serif;
+}
+
+.lados{
+  display: flex;
+  
+  height: 100vh;
+}
+.centro{
+  width: 50%;
+ 
+}
+.bolso, .lula{
+  width: 25%;
+ 
+}
+
+nav{
+  margin-top:-25px;
+  margin-left:-25px;
+  margin-right: -25px;
+  height:50px;
+  background: linear-gradient(pink, white);
 }
 
 p {
   text-align: center;
   font-family: verdana;
   font-size: 20px;
+} 
+.heart {
+  position: fixed;
+  top: -10%;
+  font-size: 24px;
+  user-select: none;
+ 
+  animation: fall 5s linear infinite;
+} 
+/* esconde checkbox */
+/* esconde checkbox */
+/* esconde checkbox */
+#like {
+  display: none;
 }
+
+/* botão no centro */
+.botao-coracao {
+  display: block;
+  text-align: center;
+  font-size: 60px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+/* efeito ao clicar */
+#like:checked + .botao-coracao {
+  transform: scale(1.2);
+}
+
+/* chuva */
+.chuva {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* corações */
+.chuva span {
+  position: absolute;
+  top: -20px;
+  font-size: 20px;
+  opacity: 0;
+}
+
+/* animação */
+@keyframes cair {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* 🔥 ativa nas DUAS laterais */
+#like:checked ~ .lados .chuva span {
+  animation: cair 2s linear infinite;
+}
+
+/* variação */
+.chuva span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.chuva span:nth-child(2) { left: 30%; animation-delay: 0.5s; }
+.chuva span:nth-child(3) { left: 50%; animation-delay: 1s; }
+.chuva span:nth-child(4) { left: 70%; animation-delay: 0.2s; }
+.chuva span:nth-child(5) { left: 90%; animation-delay: 0.8s; }
